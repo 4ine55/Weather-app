@@ -1,29 +1,29 @@
 function formatDate(now) {
   let days = [
-    "dimanche",
-    "lundi",
-    "mardi",
-    "mercredi",
-    "jeudi",
-    "vendredi",
-    "samedi",
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
   ];
-  let day = days[now.getDay()];
-
   let months = [
-    "janvier",
-    "février",
-    "mars",
-    "avril",
-    "mai",
-    "juin",
-    "juillet",
-    "août",
-    "septembre",
-    "octobre",
-    "novembre",
-    "décembre",
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
   ];
+  console.log(now);
+  let day = days[now.getDay()];
   let month = months[now.getMonth()];
   let date = now.getDate();
   let year = now.getFullYear();
@@ -40,16 +40,27 @@ function formatDate(now) {
   };
   return dateAndTime;
 }
-function updateDate() {
-  let dateAndTime = formatDate(new Date());
+function updateDate(date) {
+  let niceDate = new Date(date);
+  let dateAndTime = formatDate(niceDate);
   let day = document.querySelector("#day");
-  let dmy = document.querySelector("#date-dmy");
+  let mdy = document.querySelector("#date-mdy");
   let time = document.querySelector("#time");
   day.innerHTML = dateAndTime.day;
-  dmy.innerHTML = `${dateAndTime.date} ${dateAndTime.month} ${dateAndTime.year}`;
+  mdy.innerHTML = `${dateAndTime.month} ${dateAndTime.date}, ${dateAndTime.year}`;
   time.innerHTML = `${dateAndTime.hour}:${dateAndTime.minute}`;
 }
-
+function chooseThermometerIcon(tempValue) {
+  if (tempValue < 0) {
+    return "low";
+  }
+  if (tempValue >= 0 && tempValue <= 25) {
+    return "half";
+  }
+  if (tempValue > 25) {
+    return "high";
+  }
+}
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#today-temp");
@@ -58,10 +69,22 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon-today");
+  let sunriseElement = document.querySelector("#sunrise");
+  let sunsetElement = document.querySelector("#sunset");
+  let thermometerElement = document.querySelector("#thermometer-icon");
+
+  let sunriseTime = new Date(response.data.sys.sunrise * 1000);
+  let sunsetTime = new Date(response.data.sys.sunset * 1000);
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
+  sunriseElement.innerHTML = `  ${sunriseTime.getHours()}:${String(
+    sunriseTime.getMinutes()
+  ).padStart(2, "0")}`;
+  sunsetElement.innerHTML = `  ${sunsetTime.getHours()}:${String(
+    sunsetTime.getMinutes()
+  ).padStart(2, "0")}`;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute(
@@ -69,12 +92,16 @@ function displayTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  thermometerElement.innerHTML = `<i class="bi bi-thermometer-${chooseThermometerIcon(
+    response.data.main.temp
+  )}"></i>`;
+  updateDate(response.data.dt * 1000);
 }
 function searchWithName(city) {
   let apiKey = "8ade99d032cd211ae889750690106e26";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(displayTemperature).then(updateDate);
+  axios.get(apiUrl).then(displayTemperature);
 }
 function searchWithCoord(position) {
   let latitude = position.coords.latitude;
@@ -84,7 +111,7 @@ function searchWithCoord(position) {
   let apiKey = "8ade99d032cd211ae889750690106e26";
   let apiUrl = `${apiEndPoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
 
-  axios.get(apiUrl).then(displayTemperature).then(updateDate);
+  axios.get(apiUrl).then(displayTemperature);
 }
 
 function handleSubmit(event) {
