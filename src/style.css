@@ -6,8 +6,25 @@
   border: 1px solid grey;
   padding: 20px 10px;
   border-radius: 10px;
+  margin-bottom: 12px;
+}
+.weather-today {
+  border: 1px solid grey;
+  padding: 10px 10px;
+  border-radius: 10px;
 }
 
+#city-name {
+  text-align: left;
+  font-weight: bold;
+  font-size: 30px;
+}
+#today-temp {
+  text-align: left;
+  padding-top: 15px;
+  font-size: 45px;
+  font-weight: 700;
+}
 img {
   max-width: 100px;
 }
