@@ -25,6 +25,11 @@
   font-size: 45px;
   font-weight: 700;
 }
+.additional-infos {
+  list-style: none;
+  position: relative;
+  bottom: -60px;
+}
 img {
-  max-width: 100px;
+  max-inline-size: 100%;
 }
