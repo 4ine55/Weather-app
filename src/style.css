@@ -1,6 +1,7 @@
 .weather-app {
   max-width: 600px;
   margin: 30px auto;
+  font-family: "Source Sans 3", sans-serif;
 }
 #search-section {
   border: 1px solid grey;
@@ -28,7 +29,10 @@
 .additional-infos {
   list-style: none;
   position: relative;
-  bottom: -60px;
+  bottom: -50px;
+}
+.weather-icon {
+  text-align: center;
 }
 img {
   max-inline-size: 100%;
