@@ -9,6 +9,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
      <link rel="stylesheet" href="src/style.css" />
      
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,14 +53,14 @@
                     <div class="row">
                         <div class="col-4">
                             <span id="city-name">
-                                CITYNAME
+                            
                             </span>
                              <br>
                             Monday <br>
                             14 mai 2022 <br>
                             18:11 <br>
                             <div id="today-temp">
-                                22°
+                        
                             </div>
                             <span>
                                 °C | °F
@@ -71,7 +72,8 @@
                         </div>
                         <div class="col-4 weather-icon">
                             <img src="https://easydrawingguides.com/wp-content/uploads/2018/09/Sun-10.png" alt="sun">
-                            <br> partiellement nuageux
+                            <br> 
+                            <div id="description-temp"></div>
                         </div>
                         <div class="col-4 ">
                            <ul class="additional-infos">
@@ -82,10 +84,10 @@
                                    sunset: 19:20
                                </li>
                                <li>
-                                   precipitations: 60%
+                                   humidity: <span id="humidity"></span> %
                                </li>
                                <li>
-                                   wind: 10km/h
+                                   wind: <span id="wind"></span> km/h
                                </li>
                                <li>
                                    wind direction: Nord-Est
@@ -163,5 +165,7 @@
             </div>
         </div>
     </div>
+    <script src="src/app.js"></script>
+    
   </body>
 </html>
