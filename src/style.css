@@ -45,6 +45,7 @@ img {
   border-radius: 10px;
 }
 
-#description-temp {
+#description-temp,
+#day {
   text-transform: capitalize;
 }
