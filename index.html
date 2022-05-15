@@ -16,114 +16,120 @@
   </head>
   <body>
     <div class="container">
-     
-            <form class="row">
-                
-                <div class="col-6">
-                
-                    <input type="text" class="form-control" id="inputCity" placeholder="Choisissez une ville">
-                </div>
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary mb-3">🔍</button>
-                </div>
+        <div class="weather-app">
+            <form id="search-section">
+                <div class="row">
+                    <div class="col-6">
+                        <input 
+                            type="search" 
+                            class="form-control" 
+                            id="inputCity" 
+                            placeholder="Choisissez une ville"
+                        />
+                    </div>
+                    <div class="col-2">
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary">
+                            🔍
+                        </button>
+                    </div>
 
-                <div class="col-4">
-                    <button type="submit" class="btn btn-primary">
-                        Trouvez-moi 🎯
-                    </button>
-                   
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">
+                            Trouvez-moi 🎯
+                        </button>
+                    
+                    </div>
                 </div>
             </form>
+                
+                <div class="weatherToday">
+    
+                    <div class="row">
+                        <div class="col-4">
+                            CITYNAME <br>
+                            Monday <br>
+                            14 mai 2022 <br>
+                            18:11 <br>
+                            22 ° <br>
+                            °C | °F
+
+                        </div>
+                        <div class="col-4 weatherIcon">
+                            <img src="https://easydrawingguides.com/wp-content/uploads/2018/09/Sun-10.png" alt="sun">
+                            <br> Partiellement nuageux
+                        </div>
+                        <div class="col-4 weatherToday">
+                            sunrise 7:00 <br>
+                            sunset 19:20 <br>
+                            precipitation 60% <br>
+                            vent: 10km/h <br>
+                            direction du vent: Nord-Est 
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="next-five-days">5 prochains jours</p>
+                </div>
+                <div class="row" id="five-cards-meteo">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row justify-content-center">mar. 05/04</div>
+                                <div class="row justify-content-center" id="icon-forecast">
+                                ☀️
+                                </div>
+                                <div class="row justify-content-center">12 °C</div>
+                            </div>
+                        </div>
+                    </div>
             
-            <div class="weatherToday">
-                <div class="firstLine row">
-                    <div class="col-6 cityName">
-                        City Name
-                    </div>
-                    <div class="col-6 minMax">
-                        Min 18° Max 30°
-                    </div>
-                </div>
-
-                <div class="secondLine row">
-                    <div class="col-4">
-                        Monday <br>
-                        14 mai 2022 <br>
-                        18:11 <br>
-                        Vent: 6 km/h <br>
-                        Précipitations: 30 % <br>
-
-                    </div>
-                    <div class="col-4 weatherIcon">
-                        <img src="https://easydrawingguides.com/wp-content/uploads/2018/09/Sun-10.png" alt="sun">
-                        <br> Partiellement nuageux
-                    </div>
-                    <div class="col-4 weatherToday">
-                        22 ° <br>
-                        °C | °F
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <p class="next-five-days">5 prochains jours</p>
-            </div>
- <div class="row" id="five-cards-meteo">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row justify-content-center">mar. 05/04</div>
-                            <div class="row justify-content-center" id="icon-forecast">
-                            ☀️
-                             </div>
-                            <div class="row justify-content-center">12 °C</div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row justify-content-center">mer. 06/04</div>
+                                <div class="row justify-content-center" id="icon-forecast">
+                                🌧️
+                                </div>
+                                <div class="row justify-content-center">9 °C</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-        
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row justify-content-center">mer. 06/04</div>
-                            <div class="row justify-content-center" id="icon-forecast">
-                            🌧️
-                            </div>
-                            <div class="row justify-content-center">9 °C</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row justify-content-center">jeu. 07/04</div>
-                            <div class="row justify-content-center" id="icon-forecast">
-                            ☁️
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row justify-content-center">jeu. 07/04</div>
+                                <div class="row justify-content-center" id="icon-forecast">
+                                ☁️
+                                </div>
+                                <div class="row justify-content-center">1 °C</div>
                             </div>
-                            <div class="row justify-content-center">1 °C</div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row justify-content-center">ven. 08/04</div>
-                            <div class="row justify-content-center" id="icon-forecast">
-                                🌨️
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row justify-content-center">ven. 08/04</div>
+                                <div class="row justify-content-center" id="icon-forecast">
+                                    🌨️
+                                </div>
+                                <div class="row justify-content-center">-2 °C</div>
                             </div>
-                            <div class="row justify-content-center">-2 °C</div>
                         </div>
                     </div>
-                </div>
-        
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row justify-content-center">sam. 09/04</div>
-                            <div class="row justify-content-center" id="icon-forecast">
-                                🌤️
+            
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row justify-content-center">sam. 09/04</div>
+                                <div class="row justify-content-center" id="icon-forecast">
+                                    🌤️
+                                </div>
+                                <div class="row justify-content-center">5 °C</div>
                             </div>
-                            <div class="row justify-content-center">5 °C</div>
                         </div>
                     </div>
                 </div>
