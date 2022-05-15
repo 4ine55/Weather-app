@@ -70,10 +70,19 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
-function search(city) {
+function searchWithName(city) {
   let apiKey = "8ade99d032cd211ae889750690106e26";
-
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayTemperature).then(updateDate);
+}
+function searchWithCoord(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let unit = "metric";
+  let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiKey = "8ade99d032cd211ae889750690106e26";
+  let apiUrl = `${apiEndPoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
 
   axios.get(apiUrl).then(displayTemperature).then(updateDate);
 }
@@ -81,8 +90,16 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#inputCity");
-  search(cityInputElement.value);
+  searchWithName(cityInputElement.value);
+}
+
+function handleFindMe(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchWithCoord);
 }
 
 let form = document.querySelector("#search-section");
 form.addEventListener("submit", handleSubmit);
+
+let findMeButton = document.querySelector("#find-me-button");
+findMeButton.addEventListener("click", handleFindMe);
