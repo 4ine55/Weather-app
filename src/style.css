@@ -13,6 +13,7 @@
   border: 1px solid grey;
   padding: 10px 10px;
   border-radius: 10px;
+  margin-bottom: 12px;
 }
 
 #city-name {
@@ -30,10 +31,16 @@
   list-style: none;
   position: relative;
   bottom: -50px;
+  padding-left: 10px;
 }
 .weather-icon {
   text-align: center;
 }
 img {
   max-inline-size: 100%;
+}
+.forecast {
+  border: 1px solid grey;
+  padding: 10px 10px;
+  border-radius: 10px;
 }
