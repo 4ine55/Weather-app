@@ -121,8 +121,7 @@ function handleSubmit(event) {
   searchWithName(cityInputElement.value);
 }
 
-function handleFindMe(event) {
-  event.preventDefault();
+function handleFindMe() {
   navigator.geolocation.getCurrentPosition(searchWithCoord);
 }
 
@@ -137,6 +136,8 @@ function displayCelsiusTemperature() {
   temperatureElement.innerHTML = celsiusTemperature;
 }
 let celsiusTemperature = null;
+
+handleFindMe();
 
 let form = document.querySelector("#search-section");
 form.addEventListener("submit", handleSubmit);
