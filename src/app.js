@@ -76,6 +76,7 @@ function displayTemperature(response) {
   let sunriseTime = new Date(response.data.sys.sunrise * 1000);
   let sunsetTime = new Date(response.data.sys.sunset * 1000);
 
+  celsiusTemperature = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -125,8 +126,26 @@ function handleFindMe(event) {
   navigator.geolocation.getCurrentPosition(searchWithCoord);
 }
 
+function displayFahrenheitTemperature() {
+  let temperatureElement = document.querySelector("#today-temp");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature() {
+  let temperatureElement = document.querySelector("#today-temp");
+  temperatureElement.innerHTML = celsiusTemperature;
+}
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-section");
 form.addEventListener("submit", handleSubmit);
 
 let findMeButton = document.querySelector("#find-me-button");
 findMeButton.addEventListener("click", handleFindMe);
+
+let fahrenheitBox = document.querySelector("#fahrenheit-unit");
+fahrenheitBox.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusBox = document.querySelector("#celcius-unit");
+celsiusBox.addEventListener("click", displayCelsiusTemperature);
