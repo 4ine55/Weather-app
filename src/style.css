@@ -1,6 +1,10 @@
-.weather-app {
+.container {
   max-width: 700px;
-  margin: 30px auto;
+}
+
+.weather-app {
+  margin: auto;
+  margin-top: 30px;
   font-family: "Source Sans 3", sans-serif;
   border-radius: 20px;
   padding: 40px 60px;
@@ -14,7 +18,7 @@
   padding: 20px 10px;
   border-radius: 10px;
   margin-bottom: 12px;
-  margin-top: 12px;
+
   background: rgba(255, 255, 255, 0.37);
 }
 .weather-today {

@@ -80,8 +80,8 @@ function displayTemperature(response) {
   let sunsetElement = document.querySelector("#sunset");
   let thermometerElement = document.querySelector("#thermometer-icon");
 
-  let sunriseTime = new Date(response.data.sys.sunrise);
-  let sunsetTime = new Date(response.data.sys.sunset);
+  let sunriseTime = new Date(response.data.sys.sunrise * 1000);
+  let sunsetTime = new Date(response.data.sys.sunset * 1000);
 
   celsiusTemperature = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -176,8 +176,7 @@ function displayForecast(response) {
     }
   });
 
-  forecastHTML =
-    `<p class="next-five-days">Next 5 days</p>` + forecastHTML + `</div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
