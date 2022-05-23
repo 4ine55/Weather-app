@@ -135,9 +135,37 @@ function displayCelsiusTemperature() {
   let temperatureElement = document.querySelector("#today-temp");
   temperatureElement.innerHTML = celsiusTemperature;
 }
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row" id="five-cards-meteo">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="row justify-content-center">${day} 05/04</div>
+            <div class="row justify-content-center" id="icon-forecast">
+              ☀️
+            </div>
+            <div class="row justify-content-center">12 °C</div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  forecastHTML =
+    `<p class="next-five-days">Next 5 days</p>` + forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let celsiusTemperature = null;
 
 handleFindMe();
+displayForecast();
 
 let form = document.querySelector("#search-section");
 form.addEventListener("submit", handleSubmit);
