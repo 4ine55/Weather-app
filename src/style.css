@@ -1,19 +1,32 @@
-.container {
-  max-width: 600px;
+.weather-app {
+  max-width: 700px;
   margin: 30px auto;
   font-family: "Source Sans 3", sans-serif;
+  border-radius: 20px;
+  padding: 40px 60px;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(148, 241, 246) 0%,
+    rgb(148, 189, 246) 100.7%
+  );
 }
 #search-section {
-  border: 1px solid grey;
   padding: 20px 10px;
   border-radius: 10px;
   margin-bottom: 12px;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.37);
 }
 .weather-today {
-  border: 1px solid grey;
   padding: 10px 10px;
   border-radius: 10px;
   margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.37);
+}
+.forecast {
+  padding: 10px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.37);
 }
 
 #city-name {
@@ -38,11 +51,6 @@
   text-align: center;
 }
 
-.forecast {
-  border: 1px solid grey;
-  padding: 10px 10px;
-  border-radius: 10px;
-}
 .forecast img {
   display: block;
   margin: 0 auto;
@@ -70,6 +78,10 @@
   padding-right: 5px;
   padding-top: 8px;
   padding-bottom: 8px;
+}
+.card {
+  background-color: transparent;
+  border: 0px;
 }
 p.next-five-days {
   margin-bottom: 5px;
