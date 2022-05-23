@@ -68,4 +68,14 @@
 .card-body {
   padding-left: 5px;
   padding-right: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+p.next-five-days {
+  margin-bottom: 5px;
+}
+#forecast-max-temp,
+#forecast-min-temp {
+  display: block;
+  margin: 0 auto;
 }

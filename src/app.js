@@ -168,12 +168,18 @@ function displayForecast(response) {
               alt=""
               width="60"
             />
-            <div class="row justify-content-center" id="forecast-max-temp">${Math.round(
-              forecastDay.temp.max
-            )} °C</div>
-            <div class="row justify-content-center" id="forecast-min-temp">${Math.round(
-              forecastDay.temp.min
-            )} °C</div>
+            <div class="row justify-content-center" id="forecast-max-temp">
+              <span>
+              <i class="bi bi-arrow-up-short"></i>
+              ${Math.round(forecastDay.temp.max)} °C
+              </span>
+            </div>
+            <div class="row justify-content-center" id="forecast-min-temp">
+              <span>
+              <i class="bi bi-arrow-down-short"></i>
+              ${Math.round(forecastDay.temp.min)} °C
+              </span>
+            </div>
           </div>
         </div>
       </div>
