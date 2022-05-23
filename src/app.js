@@ -1,26 +1,27 @@
-function formatDate(now) {
+function formatDate(receivedDate) {
+  let now = new Date(receivedDate * 1000);
   let days = [
-    "sunday",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
   let months = [
-    "january",
-    "february",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "august",
-    "september",
-    "october",
-    "november",
-    "december",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   console.log(now);
   let day = days[now.getDay()];
@@ -41,8 +42,7 @@ function formatDate(now) {
   return dateAndTime;
 }
 function updateDate(date) {
-  let niceDate = new Date(date);
-  let dateAndTime = formatDate(niceDate);
+  let dateAndTime = formatDate(date);
   let day = document.querySelector("#day");
   let mdy = document.querySelector("#date-mdy");
   let time = document.querySelector("#time");
@@ -80,8 +80,8 @@ function displayTemperature(response) {
   let sunsetElement = document.querySelector("#sunset");
   let thermometerElement = document.querySelector("#thermometer-icon");
 
-  let sunriseTime = new Date(response.data.sys.sunrise * 1000);
-  let sunsetTime = new Date(response.data.sys.sunset * 1000);
+  let sunriseTime = new Date(response.data.sys.sunrise);
+  let sunsetTime = new Date(response.data.sys.sunset);
 
   celsiusTemperature = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -103,7 +103,7 @@ function displayTemperature(response) {
   thermometerElement.innerHTML = `<i class="bi bi-thermometer-${chooseThermometerIcon(
     response.data.main.temp
   )}"></i>`;
-  updateDate(response.data.dt * 1000);
+  updateDate(response.data.dt);
   getForecast(response.data.coord);
 }
 function searchWithName(city) {
@@ -145,27 +145,42 @@ function displayCelsiusTemperature() {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecastData = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row" id="five-cards-meteo">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecastData.forEach(function (forecastDay, index) {
+    if ((index > 0) & (index < 6)) {
+      forecastHTML =
+        forecastHTML +
+        `
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <div class="row justify-content-center">${day} 05/04</div>
-            <div class="row justify-content-center" id="icon-forecast">
-              ☀️
-            </div>
-            <div class="row justify-content-center">12 °C</div>
+            <div class="row justify-content-center">${
+              formatDate(forecastDay.dt).day
+            }</div>
+            <img
+              src="https://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
+              alt=""
+              width="60"
+            />
+            <div class="row justify-content-center" id="forecast-max-temp">${Math.round(
+              forecastDay.temp.max
+            )} °C</div>
+            <div class="row justify-content-center" id="forecast-min-temp">${Math.round(
+              forecastDay.temp.min
+            )} °C</div>
           </div>
         </div>
       </div>
     `;
+    }
   });
+
   forecastHTML =
     `<p class="next-five-days">Next 5 days</p>` + forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
