@@ -133,17 +133,6 @@ function handleFindMe() {
   navigator.geolocation.getCurrentPosition(searchWithCoord);
 }
 
-function displayFahrenheitTemperature() {
-  let temperatureElement = document.querySelector("#today-temp");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature() {
-  let temperatureElement = document.querySelector("#today-temp");
-  temperatureElement.innerHTML = celsiusTemperature;
-}
-
 function displayForecast(response) {
   let forecastData = response.data.daily;
 
@@ -201,9 +190,3 @@ form.addEventListener("submit", handleSubmit);
 
 let findMeButton = document.querySelector("#find-me-button");
 findMeButton.addEventListener("click", handleFindMe);
-
-let fahrenheitBox = document.querySelector("#fahrenheit-unit");
-fahrenheitBox.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusBox = document.querySelector("#celcius-unit");
-celsiusBox.addEventListener("click", displayCelsiusTemperature);
