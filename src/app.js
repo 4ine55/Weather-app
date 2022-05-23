@@ -61,6 +61,13 @@ function chooseThermometerIcon(tempValue) {
     return "high";
   }
 }
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "8ade99d032cd211ae889750690106e26";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#today-temp");
@@ -97,6 +104,7 @@ function displayTemperature(response) {
     response.data.main.temp
   )}"></i>`;
   updateDate(response.data.dt * 1000);
+  getForecast(response.data.coord);
 }
 function searchWithName(city) {
   let apiKey = "8ade99d032cd211ae889750690106e26";
@@ -136,7 +144,8 @@ function displayCelsiusTemperature() {
   temperatureElement.innerHTML = celsiusTemperature;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row" id="five-cards-meteo">`;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -165,7 +174,6 @@ function displayForecast() {
 let celsiusTemperature = null;
 
 handleFindMe();
-displayForecast();
 
 let form = document.querySelector("#search-section");
 form.addEventListener("submit", handleSubmit);
